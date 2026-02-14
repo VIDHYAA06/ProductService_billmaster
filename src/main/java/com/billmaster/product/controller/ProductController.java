@@ -1,11 +1,14 @@
 package com.billmaster.product.controller;
-
 import com.billmaster.product.dto.ProductRequest;
 import com.billmaster.product.dto.ProductResponse;
 import com.billmaster.product.service.ProductService;
+
+import jakarta.servlet.http.HttpServletResponse;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -38,4 +41,12 @@ public class ProductController {
         productService.deleteProduct(id);
         return ResponseEntity.noContent().build();
     }
+  @GetMapping("/export/pdf")
+public void exportProductsToPDF(HttpServletResponse response) throws Exception {
+
+    response.setContentType("application/pdf");
+    response.setHeader("Content-Disposition", "attachment; filename=products.pdf");
+
+    productService.exportProductsToPDF(response);
+}
 }

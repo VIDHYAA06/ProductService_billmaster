@@ -9,12 +9,11 @@ public class Product {
 
     @Id
     private String id;
-
     private String name;
-
     private double price;
-
     private int stock;
+    private String barcode;
+    private int quantity;
 
     private String category;
       public Product() {
@@ -74,4 +73,19 @@ public Product(String id, String name, double price, int stock, String category)
     public void setCategory(String category) {
         this.category = category;
     }
+    public String getBarcode() {
+    return barcode;
+}
+
+public void setBarcode(String barcode) {
+    this.barcode = barcode;
+}
+
+public int getQuantity() {
+    return quantity;
+}
+
+public void setQuantity(int quantity) {
+    this.quantity = quantity;
+}
 }
